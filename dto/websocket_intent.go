@@ -43,6 +43,16 @@ const (
 	IntentDirectMessageReactions
 	IntentDirectMessageTyping
 
+	// IntentOpenForum 公域论坛事件
+	//- OPEN_FORUM_THREAD_CREATE     // 当用户创建主题时
+	//- OPEN_FORUM_THREAD_UPDATE     // 当用户更新主题时
+	//- OPEN_FORUM_THREAD_DELETE     // 当用户删除主题时
+	//- OPEN_FORUM_POST_CREATE       // 当用户创建帖子时
+	//- OPEN_FORUM_POST_DELETE       // 当用户删除帖子时
+	//- OPEN_FORUM_REPLY_CREATE      // 当用户回复评论时
+	//- OPEN_FORUM_REPLY_DELETE      // 当用户删除评论时
+	IntentOpenForum Intent = 1 << 18 // 论坛事件, 此为公域的论坛事件
+
 	IntentInteraction Intent = 1 << 26 // 互动事件
 	IntentAudit       Intent = 1 << 27 // 审核事件
 	// IntentForum 论坛事件
