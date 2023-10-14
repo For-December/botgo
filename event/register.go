@@ -132,12 +132,18 @@ func registerForumHandlers(i dto.Intent, handlers ...interface{}) dto.Intent {
 			i = i | dto.EventToIntent(
 				dto.EventForumThreadCreate, dto.EventForumThreadUpdate, dto.EventForumThreadDelete,
 			)
+			i = i | dto.EventToIntent(
+				dto.EventOpenForumReplyCreate, dto.EventOpenForumThreadUpdate, dto.EventOpenForumThreadDelete,
+			)
+
 		case PostEventHandler:
 			DefaultHandlers.Post = handle
 			i = i | dto.EventToIntent(dto.EventForumPostCreate, dto.EventForumPostDelete)
+			i = i | dto.EventToIntent(dto.EventOpenForumPostCreate, dto.EventOpenForumPostDelete)
 		case ReplyEventHandler:
 			DefaultHandlers.Reply = handle
 			i = i | dto.EventToIntent(dto.EventForumReplyCreate, dto.EventForumReplyDelete)
+			i = i | dto.EventToIntent(dto.EventOpenForumReplyCreate, dto.EventOpenForumReplyDelete)
 		case ForumAuditEventHandler:
 			DefaultHandlers.ForumAudit = handle
 			i = i | dto.EventToIntent(dto.EventForumAuditResult)

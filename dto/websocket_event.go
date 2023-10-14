@@ -38,6 +38,17 @@ const (
 	EventForumReplyDelete      EventType = "FORUM_REPLY_DELETE"
 	EventForumAuditResult      EventType = "FORUM_PUBLISH_AUDIT_RESULT"
 	EventInteractionCreate     EventType = "INTERACTION_CREATE"
+
+	// 公域论坛消息:
+
+	EventOpenForumThreadCreate EventType = "OPEN_FORUM_THREAD_CREATE" // 当用户创建主题时
+	EventOpenForumThreadUpdate EventType = "OPEN_FORUM_THREAD_UPDATE" // 当用户更新主题时
+	EventOpenForumThreadDelete EventType = "OPEN_FORUM_THREAD_DELETE" // 当用户删除主题时
+	EventOpenForumPostCreate   EventType = "OPEN_FORUM_POST_CREATE"   // 当用户创建帖子时
+	EventOpenForumPostDelete   EventType = "OPEN_FORUM_POST_DELETE"   // 当用户删除帖子时
+	EventOpenForumReplyCreate  EventType = "OPEN_FORUM_REPLY_CREATE"  // 当用户回复评论时
+	EventOpenForumReplyDelete  EventType = "OPEN_FORUM_REPLY_DELETE"  // 当用户删除评论时
+
 )
 
 // intentEventMap 不同 intent 对应的事件定义
@@ -58,6 +69,15 @@ var intentEventMap = map[Intent][]EventType{
 		EventForumPostDelete, EventForumReplyCreate, EventForumReplyDelete, EventForumAuditResult,
 	},
 	IntentInteraction: {EventInteractionCreate},
+	IntentOpenForum: {
+		EventOpenForumThreadCreate,
+		EventOpenForumThreadUpdate,
+		EventOpenForumThreadDelete,
+		EventOpenForumPostCreate,
+		EventOpenForumPostDelete,
+		EventOpenForumReplyCreate,
+		EventOpenForumReplyDelete,
+	},
 }
 
 var eventIntentMap = transposeIntentEventMap(intentEventMap)
